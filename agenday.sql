@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2020 at 09:32 AM
+-- Generation Time: Apr 23, 2020 at 06:25 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -62,7 +62,8 @@ CREATE TABLE `agenday` (
 --
 
 INSERT INTO `agenday` (`id_agenday`, `id_kelas`, `kd_mapel`, `tanggal`, `cttn`) VALUES
-(1, '12', 'PBO', '2020-03-11', 'Mengerjakan Quiz DI Oracle Section 1-5');
+(1, '26', 'PBO', '2020-03-11', 'Mengerjakan Quiz DI Oracle Section 1-5'),
+(2, '26', 'PBO', '2020-04-08', 'Mengerjakan projek sampai tamat');
 
 -- --------------------------------------------------------
 
@@ -74,9 +75,25 @@ CREATE TABLE `data_absen` (
 `nis` char(12)
 ,`nama` varchar(50)
 ,`jk` enum('L','P')
+,`nama_kelas` char(10)
 ,`sakit` int(2)
 ,`izin` int(2)
 ,`alpha` int(2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `data_agenda`
+-- (See below for the actual view)
+--
+CREATE TABLE `data_agenda` (
+`NIP` char(20)
+,`nama_guru` varchar(50)
+,`nama_mapel` varchar(50)
+,`nama_kelas` char(10)
+,`tanggal` date
+,`cttn` text
 );
 
 -- --------------------------------------------------------
@@ -114,6 +131,52 @@ INSERT INTO `guru` (`NIP`, `nama_guru`, `kd_mapel`, `tanggal_lahir`, `tempat_lah
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `jadwal_ajar`
+-- (See below for the actual view)
+--
+CREATE TABLE `jadwal_ajar` (
+`NIP` char(20)
+,`nama_guru` varchar(50)
+,`ngajar_kls` char(10)
+,`nama_mapel` varchar(50)
+,`hari` varchar(6)
+,`jam_pelajaran` varchar(2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jdwl_ajar`
+--
+
+CREATE TABLE `jdwl_ajar` (
+  `id_ajar` int(2) NOT NULL,
+  `id_kelas` char(3) DEFAULT NULL,
+  `NIP` char(20) NOT NULL,
+  `jam_pelajaran` varchar(2) DEFAULT NULL,
+  `jam` time DEFAULT current_timestamp(),
+  `hari` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jdwl_ajar`
+--
+
+INSERT INTO `jdwl_ajar` (`id_ajar`, `id_kelas`, `NIP`, `jam_pelajaran`, `jam`, `hari`) VALUES
+(1, '0', '4', '0', '00:00:00', 'Senin'),
+(2, '24', '4', '1', '07:00:00', 'Selasa'),
+(3, '26', '4', '1', '07:00:00', 'Rabu'),
+(4, '0', '4', '0', '00:00:00', 'Kamis'),
+(5, '25', '4', '3', '08:30:00', 'Jumat'),
+(6, '0', '6', '0', '00:00:00', 'Senin'),
+(7, '24', '6', '1', '07:00:00', 'Selasa'),
+(8, '26', '6', '1', '07:00:00', 'Rabu'),
+(9, '0', '6', '0', '00:00:00', 'Kamis'),
+(10, '25', '6', '3', '08:30:00', 'Jumat');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kelas`
 --
 
@@ -128,6 +191,7 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `jurusan`) VALUES
+('0', 'Tidak Ada', 'Tidak Ada Kelas'),
 ('1', 'X AVI 1', 'AUDIO VIDEO'),
 ('10', 'X TKJ 2', 'TEKNIK KOMPUTER JARINGAN'),
 ('11', 'X RPL 1', 'REKAYASA PERANGKAT LUNAK'),
@@ -186,7 +250,9 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`username`, `paswword`) VALUES
 ('197003132008011005', '197003132008011005'),
-('197409172005012010', '197409172005012010');
+('197409172005012010', '197409172005012010'),
+('4', '4'),
+('6', '6');
 
 -- --------------------------------------------------------
 
@@ -207,16 +273,16 @@ CREATE TABLE `mapel` (
 
 INSERT INTO `mapel` (`kd_mapel`, `nama_mapel`, `waktu`, `total_jam`) VALUES
 ('BD', 'Basis Data', '180 menit', 4),
-('BIND', 'Bahasa INDONESIA', '135 menit', 3),
+('BIND', 'Bahasa Indonesia', '135 menit', 3),
 ('BING', 'Bahasa Inggris', '135 menit', 3),
 ('BK', 'Bimbingan Konseling', '90 menit', 2),
 ('BS', 'Bahasa Sunda', '90 menit', 2),
 ('Mat', 'Matematika', '180 menit', 4),
 ('OR', 'Olahraga', '90 menit', 2),
 ('PAI', 'Pendidikan Agama Islam', '135 menit', 3),
-('PBO', 'Pemrograman BerOrientasi Objek', '360 menit', 8),
+('PBO', 'Pemrograman Berorientasi Objek', '360 menit', 8),
 ('PKK', 'Produktif kreatif dan Kewirausahaan', '315 menit', 7),
-('PKN', 'Pendidikan Panca Sila Dan KewargaNegaraan', '90 menit', 2),
+('PKN', 'Pendidikan Pancasila Dan Kewarganegaraan', '90 menit', 2),
 ('PPL', 'Pemodelan Perangkat Lunak', '180 menit', 4),
 ('PWPB', 'Pemrograman Web Dan Perangkat Bergerak', '360 menit', 8);
 
@@ -241,8 +307,8 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`nis`, `nama`, `jk`, `tempat_lahir`, `tanggal_lahir`, `id_kelas`, `id_absen`) VALUES
-('1819117668', 'RAMDAN ROHENDI', 'L', 'BANDUNG', '2002-11-19', '12', '668'),
-('1819117675', 'ZAHY HABIBI', 'L', 'BANDUNG', '2003-05-19', '12', '675');
+('1819117668', 'RAMDAN ROHENDI', 'L', 'BANDUNG', '2002-11-19', '26', '668'),
+('1819117675', 'ZAHY HABIBI', 'L', 'BANDUNG', '2003-05-19', '26', '675');
 
 -- --------------------------------------------------------
 
@@ -251,7 +317,25 @@ INSERT INTO `siswa` (`nis`, `nama`, `jk`, `tempat_lahir`, `tanggal_lahir`, `id_k
 --
 DROP TABLE IF EXISTS `data_absen`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `data_absen`  AS  select `siswa`.`nis` AS `nis`,`siswa`.`nama` AS `nama`,`siswa`.`jk` AS `jk`,`absensi`.`sakit` AS `sakit`,`absensi`.`izin` AS `izin`,`absensi`.`alpha` AS `alpha` from (`siswa` join `absensi`) where `siswa`.`id_absen` = `absensi`.`id_absen` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `data_absen`  AS  select `siswa`.`nis` AS `nis`,`siswa`.`nama` AS `nama`,`siswa`.`jk` AS `jk`,`kelas`.`nama_kelas` AS `nama_kelas`,`absensi`.`sakit` AS `sakit`,`absensi`.`izin` AS `izin`,`absensi`.`alpha` AS `alpha` from ((`siswa` join `kelas`) join `absensi`) where `siswa`.`id_absen` = `absensi`.`id_absen` and `siswa`.`id_kelas` = `kelas`.`id_kelas` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `data_agenda`
+--
+DROP TABLE IF EXISTS `data_agenda`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `data_agenda`  AS  select `guru`.`NIP` AS `NIP`,`guru`.`nama_guru` AS `nama_guru`,`mapel`.`nama_mapel` AS `nama_mapel`,`kelas`.`nama_kelas` AS `nama_kelas`,`tanggal` AS `tanggal`,`cttn` AS `cttn` from (((`agenday` join `guru`) join `mapel`) join `kelas`) where `id_kelas` = `kelas`.`id_kelas` and `kd_mapel` = `mapel`.`kd_mapel` and `guru`.`kd_mapel` = `mapel`.`kd_mapel` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `jadwal_ajar`
+--
+DROP TABLE IF EXISTS `jadwal_ajar`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `jadwal_ajar`  AS  select `guru`.`NIP` AS `NIP`,`guru`.`nama_guru` AS `nama_guru`,`kelas`.`nama_kelas` AS `ngajar_kls`,`mapel`.`nama_mapel` AS `nama_mapel`,`jdwl_ajar`.`hari` AS `hari`,`jdwl_ajar`.`jam_pelajaran` AS `jam_pelajaran` from (((`guru` join `kelas`) join `mapel`) join `jdwl_ajar`) where `guru`.`kd_mapel` = `mapel`.`kd_mapel` and `guru`.`NIP` = `jdwl_ajar`.`NIP` and `kelas`.`id_kelas` = `jdwl_ajar`.`id_kelas` ;
 
 --
 -- Indexes for dumped tables
@@ -279,6 +363,14 @@ ALTER TABLE `guru`
   ADD KEY `kd_mapel` (`kd_mapel`);
 
 --
+-- Indexes for table `jdwl_ajar`
+--
+ALTER TABLE `jdwl_ajar`
+  ADD PRIMARY KEY (`id_ajar`),
+  ADD KEY `NIP` (`NIP`),
+  ADD KEY `id_kelas` (`id_kelas`);
+
+--
 -- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
@@ -299,6 +391,22 @@ ALTER TABLE `siswa`
   ADD KEY `id_absen` (`id_absen`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `agenday`
+--
+ALTER TABLE `agenday`
+  MODIFY `id_agenday` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `jdwl_ajar`
+--
+ALTER TABLE `jdwl_ajar`
+  MODIFY `id_ajar` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -316,6 +424,13 @@ ALTER TABLE `guru`
   ADD CONSTRAINT `guru_ibfk_1` FOREIGN KEY (`kd_mapel`) REFERENCES `mapel` (`kd_mapel`);
 
 --
+-- Constraints for table `jdwl_ajar`
+--
+ALTER TABLE `jdwl_ajar`
+  ADD CONSTRAINT `jdwl_ajar_ibfk_1` FOREIGN KEY (`NIP`) REFERENCES `guru` (`NIP`),
+  ADD CONSTRAINT `jdwl_ajar_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`);
+
+--
 -- Constraints for table `siswa`
 --
 ALTER TABLE `siswa`
@@ -326,3 +441,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
