@@ -12,7 +12,7 @@ import java.sql.Statement;
 import javax.swing.DefaultListModel;
 /**
  *
- * @author LENOVO
+ * @author MErvanNugraha
  */
 public class V_Jadwal extends javax.swing.JFrame {
 
@@ -29,6 +29,8 @@ public class V_Jadwal extends javax.swing.JFrame {
         Main_AgenDay.tanggal_sekarang(tgl);
     }
     
+    //Dibuat Oleh Ramdan Rohendi
+    //Fungsi untuk menampilkan data dai database ke layout
     public void TampilData(){
         String hari = Main_AgenDay.hari_sekarang();
         

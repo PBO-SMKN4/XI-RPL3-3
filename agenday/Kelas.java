@@ -7,7 +7,7 @@ package agenday;
 
 /**
  *
- * @author LENOVO
+ * @author RamdanRohendi
  */
 public class Kelas {
     private String NamaKelas;

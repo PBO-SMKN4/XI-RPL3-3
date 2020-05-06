@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author swan
+ * @author AnggaSaputra
  */
 public class V_Absensi extends javax.swing.JFrame {
     /**
@@ -31,6 +31,8 @@ public class V_Absensi extends javax.swing.JFrame {
         showData();
     }
     
+    //Dibuat oleh Yatia Nurdani
+    //Fungsi untuk menampilkan data dari database ke layout
     public void showData(){
         try{
             Statement stmt = Main_AgenDay.con.createStatement();

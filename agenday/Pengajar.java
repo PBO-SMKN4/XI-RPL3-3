@@ -7,10 +7,12 @@ package agenday;
 
 /**
  *
- * @author LENOVO
+ * @author RamdanRohendi
  */
 public interface Pengajar {
+    String tugas = "Mengerjakan Latihan";
+    
     void Mengabsen();
-    void Pelajaran();
-    void Tugas();
+    void MengisiAgenda(javax.swing.JLabel txtTgl, javax.swing.JTextArea txtCttn);
+    void setTugas(String tugas);
 }

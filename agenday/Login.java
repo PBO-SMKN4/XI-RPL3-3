@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author LENOVO
+ * @author RamdanRohendi
  */
 public class Login {
     private String username;
@@ -35,6 +35,8 @@ public class Login {
         return password;
     }
     
+    //Dibuat oleh Zahy Habibi
+    //Fungsi untuk mengecek login/validasi data
     public void cekLogin(String User, String Pass, V_Login Vlogin){
         try {
             Statement stmt = Main_AgenDay.con.createStatement();

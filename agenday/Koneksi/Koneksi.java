@@ -12,7 +12,7 @@ import com.mysql.jdbc.Connection;
 
 /**
  *
- * @author daniar
+ * @author YatiaNurdani
  */
 public class koneksi {
     

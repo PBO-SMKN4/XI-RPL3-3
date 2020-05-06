@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author LENOVO
+ * @author MErvanNugraha
  */
 public class V_TambahAgenda extends javax.swing.JFrame {
 
@@ -27,6 +27,8 @@ public class V_TambahAgenda extends javax.swing.JFrame {
         showdata();
     }
     
+    //Dibuat Oleh Zahy Habibi
+    //Fungsi Untuk Menampilkan beberapa data dari database
     DefaultTableModel dtm;
     public void showdata(){
         String kelas = Main_AgenDay.kelas.getNamaKelas();

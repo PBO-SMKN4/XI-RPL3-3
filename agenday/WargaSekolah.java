@@ -5,12 +5,15 @@
  */
 package agenday;
 
+import agenday.views.V_Menu;
+
 /**
  *
- * @author LENOVO
+ * @author RamdanRohendi
  */
 public class WargaSekolah {
     private String Nama;
+    private String Tugas;
     private String TempatLahir;
     private String Tanggalahir;
     private String JenisKelamin;
@@ -57,4 +60,18 @@ public class WargaSekolah {
     public Boolean getIzin() {return null;}
     public void setSakit(Boolean sakit) {}
     public Boolean getSakit() {return null;}
+    
+    public void setNIP(String NIP) {}
+    public String getNIP() {return null;}
+    public void setMapel(String mapel) {}
+    public String getMapel() {return null;}
+    public void cekmengisi(V_Menu menu){};
+    public void MengisiAgenda(javax.swing.JLabel txtTgl, javax.swing.JTextArea txtCttn){}
+    public void setTugas(String Tugas) {
+        this.Tugas = Tugas;
+    }
+
+    public String getTugas() {
+        return Tugas;
+    }
 }

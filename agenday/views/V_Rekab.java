@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author swan
+ * @author AnggaSaputra
  */
 public class V_Rekab extends javax.swing.JFrame {
 
@@ -28,6 +28,8 @@ public class V_Rekab extends javax.swing.JFrame {
         showData();
     }
     
+    //Dibuat oleh Ramdan Rohendi
+    //Fungsi untuk menampilkan data dari database ke layout
     DefaultTableModel dtm;
     public void showData(){
         String [] kolom = {"No", "NIS", "Nama", "JK", "Sakit","Izin","Alpha","Jumlah Kehadiran","Persentase Kehadiran"};
@@ -60,6 +62,8 @@ public class V_Rekab extends javax.swing.JFrame {
         tblSiswa.setModel(dtm);
     }
     
+    //Dibuat Oleh Nezarian Saputra
+    //Fungsi-fungsi untuk menghitung persentase kehadiran
     int jmlharipembljrn = 150;
     int jmlhadir;
     float persen;

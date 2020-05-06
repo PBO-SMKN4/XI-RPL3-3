@@ -7,12 +7,22 @@ package agenday;
 
 /**
  *
- * @author LENOVO
+ * @author RamdanRohendi
  */
 public class Absen {
     private int Sakit;
     private int Izin;
     private int Alfa;
+    private Boolean hadir;
+    private String keterangan;
+    
+    public Boolean getHadir() {
+        return hadir;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
 
     public void setAlfa(int Alfa) {
         this.Alfa = Alfa;
@@ -38,5 +48,8 @@ public class Absen {
         return Sakit;
     }
     
-    public void Kehadiran(Boolean Hadir,  String Keterangan){};
+    public void Kehadiran(Boolean Hadir,  String Keterangan){
+        this.hadir = Hadir;
+        this.keterangan = Keterangan;
+    }
 }

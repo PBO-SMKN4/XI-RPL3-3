@@ -7,7 +7,7 @@ package agenday;
 
 /**
  *
- * @author LENOVO
+ * @author RamdanRohendi
  */
 public class Siswa extends WargaSekolah{
     private String NIS;

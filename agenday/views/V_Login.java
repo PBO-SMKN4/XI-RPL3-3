@@ -10,7 +10,7 @@ import agenday.Main_AgenDay;
 
 /**
  *
- * @author LENOVO
+ * @author MErvanNugraha
  */
 public class V_Login extends javax.swing.JFrame {
 

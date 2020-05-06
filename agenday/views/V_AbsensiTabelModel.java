@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author LENOVO
+ * @author YatiaNurdani
  */
 public class V_AbsensiTabelModel extends AbstractTableModel{
     public ArrayList<WargaSekolah> list;
@@ -82,6 +82,7 @@ public class V_AbsensiTabelModel extends AbstractTableModel{
         if(columnIndex == 4){
             if(list.get(rowIndex).getSakit()== true){
                 absen.get(rowIndex).setSakit(0);
+                absen.get(rowIndex).Kehadiran(false, "Hadir");
             }
             else{
                 absen.get(rowIndex).setSakit(1);
@@ -92,6 +93,7 @@ public class V_AbsensiTabelModel extends AbstractTableModel{
         else if(columnIndex == 5){
             if(list.get(rowIndex).getIzin()== true){
                 absen.get(rowIndex).setIzin(0);
+                absen.get(rowIndex).Kehadiran(false, "Hadir");
             }
             else{
                 absen.get(rowIndex).setIzin(1);
@@ -102,6 +104,7 @@ public class V_AbsensiTabelModel extends AbstractTableModel{
         else if(columnIndex == 6){
             if(list.get(rowIndex).getAlpha()== true){
                 absen.get(rowIndex).setAlfa(0);
+                absen.get(rowIndex).Kehadiran(false, "Hadir");
             }
             else{
                 absen.get(rowIndex).setAlfa(1);

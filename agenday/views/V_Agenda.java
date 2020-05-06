@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author LENOVO
+ * @author MErvanNugraha
  */
 public class V_Agenda extends javax.swing.JFrame {
 
@@ -26,9 +26,34 @@ public class V_Agenda extends javax.swing.JFrame {
         Main_AgenDay.tanggal_sekarang(txtTgl);
         txtKls.setText(Main_AgenDay.kelas.getNamaKelas());
         showdata();
+        showDatahadir();
     }
     
+    //Dibuat oleh RamdanRohendi
+    //Fungsi untuk menampilkan data siswa yang tidak hadir
+    //Belum sukses
+    public void showDatahadir(){
+        String [] kolom = {"No","Nama", "Keterangan"};
+        dtm = new DefaultTableModel(null, kolom);
+        
+        int no = 1;
+        int jumlah = Main_AgenDay.absen.length;
+        
+//        for (int i = 0; i < jumlah; i++) {
+//            Boolean hadir = Main_AgenDay.absen[0].getHadir();
+//            if(hadir == true){
+                String Nama = Main_AgenDay.siswa.getNama();
+                String Keterangan = Main_AgenDay.absen[no].getKeterangan();
+                
+                dtm.addRow(new String[] {no + ". ", Nama, Keterangan });
+//                no++;
+//            }
+//        }
+        TblHadir.setModel(dtm);
+    }
     
+    //Dibuat oleh Zahy Habibi
+    //Fungsi untuk menampilkan data dari database ke layout
     DefaultTableModel dtm;
     public void showdata(){
         String kelas = Main_AgenDay.kelas.getNamaKelas();
@@ -77,7 +102,7 @@ public class V_Agenda extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TblHadir = new javax.swing.JTable();
         txtGuru = new javax.swing.JLabel();
         txtMapel = new javax.swing.JLabel();
         txtKls = new javax.swing.JLabel();
@@ -142,7 +167,7 @@ public class V_Agenda extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Yang Tidak Hadir");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TblHadir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -161,7 +186,7 @@ public class V_Agenda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(TblHadir);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -332,6 +357,7 @@ public class V_Agenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TblHadir;
     private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -344,7 +370,6 @@ public class V_Agenda extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtCttn;
     private javax.swing.JLabel txtGuru;
     private javax.swing.JLabel txtKls;

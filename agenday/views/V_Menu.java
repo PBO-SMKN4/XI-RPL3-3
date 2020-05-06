@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author LENOVO
+ * @author MErvanNugraha
  */
 public class V_Menu extends javax.swing.JFrame {
 
@@ -29,6 +29,7 @@ public class V_Menu extends javax.swing.JFrame {
         dataKelas();
     }
     
+    //Fungsi untuk menge-set kelas apa yang di agenda kan
     public void dataKelas(){
         String hari = Main_AgenDay.hari_sekarang();
         String nip = V_Login.login.getUsername();

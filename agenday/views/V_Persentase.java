@@ -10,7 +10,7 @@ import agenday.Kelas;
 
 /**
  *
- * @author swan
+ * @author AnggaSaputra
  */
 public class V_Persentase extends javax.swing.JFrame {
 

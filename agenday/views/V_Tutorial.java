@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author LENOVO
+ * @author NezarianSaputra
  */
 public class V_Tutorial extends javax.swing.JFrame {
 
