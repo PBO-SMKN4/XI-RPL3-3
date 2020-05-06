@@ -1,0 +1,6 @@
+Untuk Login silahkan masukan :
+
+	Username = 4
+	Password = 4
+
+*bisa juga dilihat di database*
