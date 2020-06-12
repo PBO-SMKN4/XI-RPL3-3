@@ -5,8 +5,6 @@
  */
 package agenday;
 
-import agenday.views.V_Menu;
-
 /**
  *
  * @author RamdanRohendi
@@ -65,7 +63,7 @@ public class WargaSekolah {
     public String getNIP() {return null;}
     public void setMapel(String mapel) {}
     public String getMapel() {return null;}
-    public void cekmengisi(V_Menu menu){};
+    public Boolean cekmengisi(String nip, String kelas, String hari){return null;};
     public void MengisiAgenda(javax.swing.JLabel txtTgl, javax.swing.JTextArea txtCttn){}
     public void setTugas(String Tugas) {
         this.Tugas = Tugas;

@@ -5,10 +5,6 @@
  */
 package agenday;
 
-import agenday.views.V_Agenda;
-import agenday.views.V_Login;
-import agenday.views.V_Menu;
-import agenday.views.V_TambahAgenda;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -79,7 +75,7 @@ public class Guru extends WargaSekolah implements Pengajar{
     //Method untuk mengisi data agenda ke database
     @Override
     public void MengisiAgenda(javax.swing.JLabel txtTgl, javax.swing.JTextArea txtCttn) {
-        String nip = V_Login.login.getUsername();
+        String nip = Main_AgenDay.login.getUser();
         String kd_mapel = "mapel";
         String tanggal = txtTgl.getText();
         String id_kelas = "kelas";
@@ -126,13 +122,8 @@ public class Guru extends WargaSekolah implements Pengajar{
     
     //Fungsi untuk mengecek apakah sudah mengisi form agenda atau belum pada saat itu
     @Override
-    public void cekmengisi(V_Menu menu) {
-        V_TambahAgenda tAgenda = new V_TambahAgenda();
-        V_Agenda agenda = new V_Agenda();
-        
-        String kelas = Main_AgenDay.kelas.getNamaKelas();
-        String hari = Main_AgenDay.tanggal_sekarang();
-        String nip = Main_AgenDay.guru.getNIP();
+    public Boolean cekmengisi(String nip, String kelas, String hari) {
+        Boolean sudah = true;
         
         try {
             Statement stmt = Main_AgenDay.con.createStatement();
@@ -140,19 +131,16 @@ public class Guru extends WargaSekolah implements Pengajar{
             ResultSet rs = stmt.executeQuery(query);
             if(rs.next()){
                 if(nip.equals(rs.getString("NIP")) && hari.equals(rs.getString("tanggal")) && kelas.equals(rs.getString("nama_kelas"))){
-                    menu.setVisible(false);
-                    tAgenda.setVisible(false);
-                    agenda.setVisible(true);
+                    sudah = true;
                 }
             }
             else{
-                menu.setVisible(false);
-                tAgenda.setVisible(true);
-                agenda.setVisible(false);
+                sudah = false;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return sudah;
     }
     
 }

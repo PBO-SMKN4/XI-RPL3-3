@@ -47,7 +47,6 @@ public class Login {
                     JOptionPane.showMessageDialog(null, "Berhasil Log-in");
                     V_Menu menu = new V_Menu();
                     setUsername(User);
-                    Main_AgenDay.guru.setNIP(User);
                     menu.setVisible(true);
                     Vlogin.setVisible(false);
                 }
